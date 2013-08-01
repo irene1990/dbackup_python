@@ -32,11 +32,11 @@ class Dingjia(unittest.TestCase):
 #        addFTP(driver,"ftp1831","192.168.88.183","irene","dingjia","183FTP/complicate")
 #        alert.accept()
 #------------------------------添加存储服务器-------------------------------------
-#        def addFTP(driver,name,ip,lname,lpasswd,dir):
-#            action_chains = ActionChains(driver)
-#            time.sleep(3)
-#            action_chains.move_to_element(driver.find_element_by_link_text("存储服务器")).perform()
-#            action_chains.click(driver.find_element_by_link_text("添加存储服务器")).perform()
+        def addFTP(driver,name,ip,lname,lpasswd,dir):
+            action_chains = ActionChains(driver)
+            time.sleep(3)
+            action_chains.move_to_element(driver.find_element_by_link_text("存储服务器")).perform()
+            action_chains.click(driver.find_element_by_link_text("添加存储服务器")).perform()
 #            time.sleep(3)
 #            driver.find_element_by_id("strFTPNameID").send_keys(name)
 #            se = driver.find_element_by_id("protocalSelect")
