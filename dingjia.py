@@ -32,11 +32,11 @@ class Dingjia(unittest.TestCase):
 #        addFTP(driver,"ftp1831","192.168.88.183","irene","dingjia","183FTP/complicate")
 #        alert.accept()
 #------------------------------添加存储服务器-------------------------------------
-        def addFTP(driver,name,ip,lname,lpasswd,dir):
-            action_chains = ActionChains(driver)
-            time.sleep(3)
-            action_chains.move_to_element(driver.find_element_by_link_text("存储服务器")).perform()
-            action_chains.click(driver.find_element_by_link_text("添加存储服务器")).perform()
+#        def addFTP(driver,name,ip,lname,lpasswd,dir):
+#            action_chains = ActionChains(driver)
+#            time.sleep(3)
+#            action_chains.move_to_element(driver.find_element_by_link_text("存储服务器")).perform()
+#            action_chains.click(driver.find_element_by_link_text("添加存储服务器")).perform()
 #            time.sleep(3)
 #            driver.find_element_by_id("strFTPNameID").send_keys(name)
 #            se = driver.find_element_by_id("protocalSelect")
@@ -53,19 +53,20 @@ class Dingjia(unittest.TestCase):
 #------------------------------添加存储服务器成功--------------------------------
         time.sleep(5)
 #------------------------------注册用户------------------------------------------
-#        def addUser(name,passwd,confirmpasswd,email,telephone):
-#            action_chains.move_to_element(driver.find_element_by_link_text("用户管理")).perform()
-#            action_chains.click(driver.find_element_by_link_text("注册用户")).perform()
-#            driver.find_element_by_id("username").send_keys(name)
-#            driver.find_element_by_id("password").send_keys(passwd)
-#            driver.find_element_by_id("confirmpassword").send_keys(confirmpasswd)
-#            driver.find_element_by_id("email").send_keys(email)
-#            driver.find_element_by_id("telephone").send_keys(telephone)
-#            driver.find_element_by_name("strPrivilegeName()").click()
-#            driver.find_element_by_id("RegisterBut").click()
-#            alert = self.driver.switch_to_alert()
-#            alert.accept()
-#            time.sleep(3)
+        def addUser(name,passwd,confirmpasswd,email,telephone):
+            action_chains = ActionChains(driver)
+            action_chains.move_to_element(driver.find_element_by_link_text("用户管理")).perform()
+            action_chains.click(driver.find_element_by_link_text("注册用户")).perform()
+            driver.find_element_by_id("username").send_keys(name)
+            driver.find_element_by_id("password").send_keys(passwd)
+            driver.find_element_by_id("confirmpassword").send_keys(confirmpasswd)
+            driver.find_element_by_id("email").send_keys(email)
+            driver.find_element_by_id("telephone").send_keys(telephone)
+            driver.find_element_by_name("strPrivilegeName()").click()
+            driver.find_element_by_id("RegisterBut").click()
+            alert = self.driver.switch_to_alert()
+            alert.accept()
+            time.sleep(3)
 #------------------------------注册用户成功------------------------------------------
 
 #------------------------------授权用户------------------------------------------
@@ -114,6 +115,7 @@ class Dingjia(unittest.TestCase):
 #            alert.accept()
             #取消授权成功
 #------------------------------授权用户------------------------------------------
+        addUser("nnnnnn","dingjia123","dingjia123","email@qq.com","telephone")
         accredit("192.168.88.77")       
         time.sleep(5)
         driver.switch_to_window(handle)
