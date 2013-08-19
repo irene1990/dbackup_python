@@ -100,9 +100,13 @@ class User(unittest.TestCase):
         i = 0
         while i < len(li):
             tmp = re.search(str(i+1),privilege)
+            iss = self.driver.find_element_by_id(li[i]).is_selected()#判断选项是否已选中。True已选中，False未选中
             if tmp !=None:
-                self.driver.find_element_by_id(li[i]).click()
-                print li[i]
+                if iss == False:
+                    self.driver.find_element_by_id(li[i]).click()
+            elif tmp == None:
+                if iss == True:
+                    self.driver.find_element_by_id(li[i]).click()
             i +=1
         time.sleep(2)
         self.driver.find_element_by_id("nSubmitModifyButID").click()
@@ -110,6 +114,7 @@ class User(unittest.TestCase):
         time.sleep(2)
         alert.accept()
         time.sleep(2)
+#--------------------------------修改客户成功--------------------
 
 #--------------------------------客户端访问----------------------
     def VisitedCient(self,user,client):
@@ -140,7 +145,6 @@ class User(unittest.TestCase):
 
 #--------------------------------选择用户-----------------------
     def ChooseUser(self,user):
-        print 'ChooseUser'
         ii = 2
         tmp = ' '
         while (cmp(tmp,user)!=0):
@@ -148,6 +152,14 @@ class User(unittest.TestCase):
             ii +=1
         self.driver.find_element_by_id("RadioID"+str(ii-3)+"").click()
         time.sleep(2)
+
+    def UserRow(self,user):
+        ii = 2
+        tmp = ' '
+        while (cmp(tmp,user)!=0):
+            tmp = self.driver.find_element_by_xpath("//div/table/tbody/tr["+str(ii)+"]/td[2]").text
+            ii +=1
+        return ii-3
 #--------------------------------选择用户成功-------------------
 
 #------------------------------- 确定取消操作--------------------
